@@ -12,35 +12,82 @@ let height = canvas.height - 30; // subtracting the height of the canvas by 30 (
 let directionx = 2;
 let directiony = -2;
 
-// Making the draw function for the game
-function draw() {
+// Checking the ball radius
+let ballRadius = 10;
+
+// Doing the paddle
+let paddleHeight = 10;
+let paddleWidth = 75;
+let paddleX = (canvas.width - paddleWidth) / 2;
+
+// Checking user input left arrow and right arrow keys
+let rightPressed = false;
+let leftPressed = false;
+
+// Adding a event listener for the arrow keys and player movement
+document.addEventListener("keydown", keyDown, false);
+document.addEventListener("keyup", keyUp, false);
+
+// creating the function for the right and left arrow key
+function keyDown(e) {
+    // code
+}
+
+// creating the function for the right and left arrow key
+function keyUp(e) {
+    // code
+}
+
+
+// Making a function to draw the paddle
+function drawPaddle() {
+    context.beginPath();
+    context.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+    context.fillStyle = "#0095DD";
+    context.fill();
+    context.closePath();
+}
+
+// Making the drawBall function for the game
+function drawBall() {
     context.beginPath();
     context.arc(width, height, 10, 0, Math.PI * 2); // When duing Math.pi and multiplying by 2 it will create a full circle 
     context.fillStyle = "#0095DD";
     context.fill();
     context.closePath();
+}
+
+// Making the draw function for the game
+function draw() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.arc(width, height, ballRadius, 0, Math.PI * 2);
     width += directionx;
     height += directiony;
+
+    // calling the function drawBall()
+    drawBall();
+
+    // What this if statement does make the ball bounce around the walls
+    if (height + directiony < 0) {
+        directiony = -directiony;
+    }
+    
+    if (height + directiony > canvas.height) {
+        directiony = -directiony;
+    }
+
+    if (height + directiony > canvas.height || height + directiony < 0) {
+        directiony = -directiony;
+    }
+
+    if (width + directionx > canvas.width || width + directionx < 0) {
+        directionx = -directionx;
+    }
+
+    if (height + directiony > canvas.height || height + directiony < 0) {
+        directiony = -directiony;
+    }
+
+    drawPaddle();
 }
 setInterval(draw, 10);
-
-context.beginPath();
-// Making a square (To test it out)
-context.rect(20, 40, 50, 50);
-context.fillStyle = "#FF0000";
-context.fill();
-context.closePath();
-
-// Making a ball (A circle)
-context.beginPath();
-context.arc(240, 160, 20, 0, Math.PI * 2, false);
-context.fillStyle = "blue";
-context.fill();
-context.closePath();
-
-// Making a rectange (To test it out)
-context.beginPath();
-context.rect(160, 10, 100, 40);
-context.fillStyle = "green";
-context.fill();
-context.closePath();
