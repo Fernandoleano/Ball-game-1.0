@@ -1,5 +1,6 @@
 /*
     Creator of the code is me Fernando Leano
+    Developer
 */
 
 let canvas = document.createElement('gameCanvas');
