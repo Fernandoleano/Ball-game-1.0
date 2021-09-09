@@ -18,3 +18,23 @@ context.rect(160, 10, 100, 40);
 context.fillStyle = "green";
 context.fill();
 context.closePath();
+
+ if (height + directiony < 0) {
+        directiony = -directiony;
+    }
+    
+    if (height + directiony > canvas.height) {
+        directiony = -directiony;
+    }
+
+     if (width + directionx > canvas.width || width + directionx < 0) {
+        directionx = -directionx;
+    }
+    
+    if (height + directiony > canvas.height || height + directiony < 0) {
+        directiony = -directiony;
+    }
+
+    if (height + directiony > canvas.height || height + directiony < 0) {
+        directiony = -directiony;
+    }
