@@ -177,7 +177,7 @@ function draw() {
         if (width > paddleSpeed && width < paddleSpeed + paddleWidth) {
             directiony = -directiony;
         } else {
-            console.warn("Wow trying to cheat the system I see turt me your not that guy pal your not leave and play again like a true winner");
+            console.warn("Wow trying to cheat the system I see trust me your not that guy pal your not leave and play again like a true winner");
             alert("Game is over");
             document.location.reload();
             clearInterval(interval);
